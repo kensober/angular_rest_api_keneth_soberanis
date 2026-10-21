@@ -1,0 +1,105 @@
+.list-page {
+  padding-top: 54px;
+  padding-bottom: 70px;
+}
+header {
+  position: relative;
+  padding-bottom: 38px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 36px;
+}
+header button {
+  color: var(--muted);
+  margin-left: -12px;
+  margin-bottom: 38px;
+}
+.eyebrow {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.title-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+}
+h1 {
+  font: 400 clamp(52px, 8vw, 96px)/0.95 var(--display);
+  letter-spacing: -0.04em;
+  margin: 8px 0 0;
+}
+.title-row span {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 11px;
+}
+header > p:last-child {
+  color: var(--muted);
+  max-width: 650px;
+  line-height: 1.6;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+mat-paginator {
+  margin-top: 34px;
+  background: transparent;
+  color: var(--text);
+  border-top: 1px solid var(--line);
+}
+.state {
+  min-height: 420px;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  color: var(--muted);
+  gap: 14px;
+}
+.state p {
+  margin: 0;
+}
+.empty mat-icon {
+  font-size: 55px;
+  width: 55px;
+  height: 55px;
+  color: var(--accent);
+}
+.empty h2 {
+  font: 32px var(--display);
+  color: var(--text);
+  margin: 8px 0 0;
+}
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  header button {
+    margin-bottom: 24px;
+  }
+}
+@media (max-width: 500px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .title-row {
+    display: block;
+  }
+  .title-row span {
+    display: block;
+    margin-top: 12px;
+  }
+  h1 {
+    font-size: 51px;
+  }
+}
