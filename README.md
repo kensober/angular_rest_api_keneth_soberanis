@@ -35,4 +35,6 @@ Las URL base están declaradas como constantes al inicio de cada servicio. Las i
 
 ## Nota de entrega
 
-El PDF exige un repositorio llamado `angular_rest_api_nombre1_apellido1` y al menos siete commits progresivos. Este proyecto no inicializa Git: crea el repositorio con tu nombre y registra avances reales antes de entregar la URL.
+Repositorio público: [angular_rest_api_keneth_soberanis](https://github.com/kensober/angular_rest_api_keneth_soberanis).
+
+El historial de la rama `main` contiene más de siete commits progresivos que documentan la creación del proyecto, la configuración de Angular Material, el dashboard y la integración de cada API.
