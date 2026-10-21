@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,36 +9,7 @@ import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
 @Component({
   selector: 'app-character-card',
   imports: [RouterLink, MatCardModule, MatIconModule],
-  template: `
-    <mat-card class="character">
-      <button
-        class="image-button"
-        type="button"
-        (click)="openImage()"
-        [attr.aria-label]="'Ampliar imagen de ' + character().name"
-      >
-        @if (!failed()) {
-          <img [src]="character().image" [alt]="character().name" (error)="failed.set(true)" />
-        } @else {
-          <span class="fallback"
-            ><mat-icon>hide_image</mat-icon><small>Imagen no disponible</small></span
-          >
-        }
-        <span class="zoom" aria-hidden="true"><mat-icon>zoom_in</mat-icon></span>
-      </button>
-      <mat-card-content>
-        <small>ID: {{ character().id }}</small>
-        <h2>{{ character().name }}</h2>
-        <a
-          class="detail-link"
-          [routerLink]="['/', character().universe, character().id]"
-          [attr.aria-label]="'Ver detalle de ' + character().name"
-        >
-          Ver detalle <mat-icon>arrow_forward</mat-icon>
-        </a>
-      </mat-card-content>
-    </mat-card>
-  `,
+  templateUrl: './character-card.component.html',
   styles: `
     .character {
       height: 100%;
@@ -143,14 +114,14 @@ import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
   `,
 })
 export class CharacterCardComponent {
-  readonly character = input.required<CharacterSummary>();
-  readonly failed = signal(false);
+  @Input({ required: true }) character!: CharacterSummary;
+  failed = false;
 
   constructor(private readonly dialog: MatDialog) {}
 
   openImage(): void {
     this.dialog.open(ImageDialogComponent, {
-      data: { name: this.character().name, image: this.character().image },
+      data: { name: this.character.name, image: this.character.image },
       maxWidth: '94vw',
       panelClass: 'image-dialog-panel',
     });

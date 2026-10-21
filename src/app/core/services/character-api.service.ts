@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CharacterDetail, PagedResult, UniverseId } from '../models/character.model';
 import { DemonSlayerService } from './demon-slayer.service';
 import { DigimonService } from './digimon.service';
@@ -12,6 +12,7 @@ export class CharacterApiService {
   private readonly pokemon = inject(PokemonService);
   private readonly demon = inject(DemonSlayerService);
   list(universe: UniverseId, page: number, size: number): Observable<PagedResult> {
+    // El listado usa el servicio de la API que eligió el usuario.
     switch (universe) {
       case 'digimon':
         return this.digimon.list(page, size);
@@ -33,8 +34,6 @@ export class CharacterApiService {
         return this.pokemon.detail(id);
       case 'demon-slayer':
         return this.demon.detail(id);
-      default:
-        return throwError(() => new Error('Universo desconocido'));
     }
   }
 }

@@ -1,0 +1,28 @@
+<mat-card class="character">
+  <button
+    class="image-button"
+    type="button"
+    (click)="openImage()"
+    [attr.aria-label]="'Ampliar imagen de ' + character.name"
+  >
+    @if (!failed) {
+      <img [src]="character.image" [alt]="character.name" (error)="failed = true" />
+    } @else {
+      <span class="fallback"
+        ><mat-icon>hide_image</mat-icon><small>Imagen no disponible</small></span
+      >
+    }
+    <span class="zoom" aria-hidden="true"><mat-icon>zoom_in</mat-icon></span>
+  </button>
+  <mat-card-content>
+    <small>ID: {{ character.id }}</small>
+    <h2>{{ character.name }}</h2>
+    <a
+      class="detail-link"
+      [routerLink]="['/', character.universe, character.id]"
+      [attr.aria-label]="'Ver detalle de ' + character.name"
+    >
+      Ver detalle <mat-icon>arrow_forward</mat-icon>
+    </a>
+  </mat-card-content>
+</mat-card>

@@ -1,7 +1,6 @@
 export type UniverseId = 'digimon' | 'dragon-ball' | 'pokemon' | 'demon-slayer';
 export interface UniverseInfo {
   id: UniverseId;
-  index: string;
   name: string;
   shortName: string;
   description: string;
@@ -35,7 +34,6 @@ export interface PagedResult {
 export const UNIVERSES: UniverseInfo[] = [
   {
     id: 'digimon',
-    index: '01',
     name: 'Digimon',
     shortName: 'Digimon',
     description: 'Criaturas digitales, niveles, atributos y rutas evolutivas del Mundo Digital.',
@@ -44,7 +42,6 @@ export const UNIVERSES: UniverseInfo[] = [
   },
   {
     id: 'dragon-ball',
-    index: '02',
     name: 'Dragon Ball Z',
     shortName: 'DBZ',
     description: 'Guerreros, razas, niveles de ki y transformaciones del Universo 7.',
@@ -53,7 +50,6 @@ export const UNIVERSES: UniverseInfo[] = [
   },
   {
     id: 'pokemon',
-    index: '03',
     name: 'Pokémon',
     shortName: 'Pokémon',
     description: 'Especies, tipos, habilidades y estadísticas de la Pokédex mundial.',
@@ -63,7 +59,6 @@ export const UNIVERSES: UniverseInfo[] = [
   },
   {
     id: 'demon-slayer',
-    index: '04',
     name: 'Demon Slayer',
     shortName: 'Kimetsu',
     description: 'Cazadores, demonios y relatos del cuerpo de exterminio.',

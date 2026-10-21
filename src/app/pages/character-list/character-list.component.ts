@@ -22,45 +22,7 @@ import { CharacterCardComponent } from '../../shared/character-card/character-ca
     CharacterCardComponent,
   ],
   providers: [{ provide: MatPaginatorIntl, useFactory: spanishPaginatorIntl }],
-  template: `<section class="list-page page-shell">
-    @if (universe()) {
-      <header>
-        <button mat-button (click)="back()"><mat-icon>arrow_back</mat-icon> Volver</button>
-        <div class="title-row">
-          <h1>Personajes de {{ universe()!.name }}</h1>
-          <span>{{ total() }} personajes</span>
-        </div>
-        <p>{{ universe()!.description }}</p>
-      </header>
-      @if (loading()) {
-        <div class="state" role="status">
-          <mat-spinner diameter="44"></mat-spinner>
-          <p>Cargando personajes...</p>
-        </div>
-      } @else if (items().length) {
-        <div class="grid">
-          @for (character of items(); track character.id) {
-            <app-character-card [character]="character" />
-          }
-        </div>
-        <mat-paginator
-          [length]="total()"
-          [pageIndex]="page()"
-          [pageSize]="pageSize"
-          [pageSizeOptions]="[8, 12, 24]"
-          (page)="changePage($event)"
-          aria-label="Seleccionar página de personajes"
-        />
-      } @else {
-        <div class="state empty">
-          <mat-icon>travel_explore</mat-icon>
-          <h2>No hay personajes</h2>
-          <p>No se encontraron resultados.</p>
-          <button mat-stroked-button (click)="load()">Intentar de nuevo</button>
-        </div>
-      }
-    }
-  </section>`,
+  templateUrl: './character-list.component.html',
   styleUrl: './character-list.component.scss',
 })
 export class CharacterListComponent {

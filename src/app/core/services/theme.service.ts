@@ -1,18 +1,17 @@
 import { DOCUMENT } from '@angular/common';
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 export type ThemeMode = 'light' | 'dark';
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
   private readonly document = inject(DOCUMENT);
-  readonly mode = signal<ThemeMode>(this.initialTheme());
+  mode: ThemeMode = this.initialTheme();
   constructor() {
-    this.apply(this.mode());
+    this.apply(this.mode);
   }
   toggle(): void {
-    const next = this.mode() === 'dark' ? 'light' : 'dark';
-    this.mode.set(next);
-    this.apply(next);
-    localStorage.setItem('multiverso-theme', next);
+    this.mode = this.mode === 'dark' ? 'light' : 'dark';
+    this.apply(this.mode);
+    localStorage.setItem('multiverso-theme', this.mode);
   }
   private initialTheme(): ThemeMode {
     const saved = localStorage.getItem('multiverso-theme');

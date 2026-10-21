@@ -14,70 +14,7 @@ import { ImageDialogComponent } from '../../shared/image-dialog/image-dialog.com
 @Component({
   selector: 'app-character-detail',
   imports: [MatButtonModule, MatChipsModule, MatIconModule, MatProgressSpinnerModule],
-  template: `<section class="detail page-shell">
-    @if (loading()) {
-      <div class="loading">
-        <mat-spinner diameter="48"></mat-spinner>
-        <p>Cargando información...</p>
-      </div>
-    } @else if (character(); as c) {
-      <button class="back" mat-button (click)="back()">
-        <mat-icon>arrow_back</mat-icon> Volver a personajes
-      </button>
-      <div class="detail-grid">
-        <div class="visual">
-          <span class="index">ID: {{ c.id }}</span>
-          <button (click)="openImage()" [attr.aria-label]="'Ampliar imagen de ' + c.name">
-            <img [src]="c.image" [alt]="c.name" /><span><mat-icon>zoom_in</mat-icon> Ampliar</span>
-          </button>
-        </div>
-        <article>
-          <p class="universe-name">{{ universe()?.name }}</p>
-          <h1>{{ c.name }}</h1>
-          @if (c.description) {
-            <p class="description">{{ c.description }}</p>
-          }
-          @if (c.facts.length) {
-            <dl>
-              @for (fact of c.facts; track fact.label) {
-                <div>
-                  <dt>{{ fact.label }}</dt>
-                  <dd>{{ fact.value }}</dd>
-                </div>
-              }
-            </dl>
-          }
-          @if (c.tags.length) {
-            <section class="tags">
-              <h2>Clasificación y habilidades</h2>
-              <mat-chip-set aria-label="Atributos del personaje">
-                @for (tag of c.tags; track tag) {
-                  <mat-chip>{{ tag }}</mat-chip>
-                }
-              </mat-chip-set>
-            </section>
-          }
-          @if (c.sections.length) {
-            <section class="sections">
-              <h2>Información adicional</h2>
-              @for (section of c.sections; track section.title) {
-                <div>
-                  <h3>{{ section.title }}</h3>
-                  <p>{{ section.body }}</p>
-                </div>
-              }
-            </section>
-          }
-        </article>
-      </div>
-    } @else {
-      <div class="loading">
-        <mat-icon>error_outline</mat-icon>
-        <h1>Personaje no encontrado</h1>
-        <button mat-stroked-button (click)="back()">Regresar</button>
-      </div>
-    }
-  </section>`,
+  templateUrl: './character-detail.component.html',
   styleUrl: './character-detail.component.scss',
 })
 export class CharacterDetailComponent {

@@ -38,9 +38,9 @@ import { UNIVERSES } from '../../core/models/character.model';
       <button
         mat-icon-button
         (click)="theme.toggle()"
-        [attr.aria-label]="theme.mode() === 'dark' ? 'Activar tema claro' : 'Activar tema oscuro'"
+        [attr.aria-label]="theme.mode === 'dark' ? 'Activar tema claro' : 'Activar tema oscuro'"
       >
-        <mat-icon>{{ theme.mode() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        <mat-icon>{{ theme.mode === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
       </button>
       <button
         class="mobile-menu"
