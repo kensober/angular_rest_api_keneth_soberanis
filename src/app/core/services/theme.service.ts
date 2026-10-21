@@ -17,9 +17,9 @@ export class ThemeService {
   private initialTheme(): ThemeMode {
     const saved = localStorage.getItem('multiverso-theme');
     if (saved === 'light' || saved === 'dark') return saved;
-    return typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: light)').matches
-      ? 'light'
-      : 'dark';
+    return typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
   }
   private apply(mode: ThemeMode): void {
     this.document.documentElement.dataset['theme'] = mode;

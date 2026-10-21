@@ -26,17 +26,16 @@ import { CharacterCardComponent } from '../../shared/character-card/character-ca
     @if (universe()) {
       <header>
         <button mat-button (click)="back()"><mat-icon>arrow_back</mat-icon> Volver</button>
-        <p class="eyebrow">Archivo {{ universe()!.index }} / Catálogo</p>
         <div class="title-row">
-          <h1>{{ universe()!.name }}</h1>
-          <span>{{ total() }} registros</span>
+          <h1>Personajes de {{ universe()!.name }}</h1>
+          <span>{{ total() }} personajes</span>
         </div>
         <p>{{ universe()!.description }}</p>
       </header>
       @if (loading()) {
         <div class="state" role="status">
           <mat-spinner diameter="44"></mat-spinner>
-          <p>Sincronizando archivo dimensional…</p>
+          <p>Cargando personajes...</p>
         </div>
       } @else if (items().length) {
         <div class="grid">
@@ -55,8 +54,8 @@ import { CharacterCardComponent } from '../../shared/character-card/character-ca
       } @else {
         <div class="state empty">
           <mat-icon>travel_explore</mat-icon>
-          <h2>El archivo está vacío</h2>
-          <p>No encontramos personajes en esta coordenada.</p>
+          <h2>No hay personajes</h2>
+          <p>No se encontraron resultados.</p>
           <button mat-stroked-button (click)="load()">Intentar de nuevo</button>
         </div>
       }
@@ -105,7 +104,7 @@ export class CharacterListComponent {
         },
         error: () => {
           this.items.set([]);
-          this.snack.open('No pudimos cargar el archivo. Verifica tu conexión.', 'Cerrar', {
+          this.snack.open('No se pudieron cargar los personajes. Verifica tu conexión.', 'Cerrar', {
             duration: 5000,
           });
         },

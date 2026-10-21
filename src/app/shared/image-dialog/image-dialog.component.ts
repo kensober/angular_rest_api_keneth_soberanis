@@ -28,8 +28,8 @@ import { MatIconModule } from '@angular/material/icon';
         padding: 8px 10px 0 24px;
       }
       .dialog-head p {
-        font-family: var(--display);
-        font-size: 22px;
+        font-size: 20px;
+        font-weight: 600;
         margin: 0;
       }
       mat-dialog-content {

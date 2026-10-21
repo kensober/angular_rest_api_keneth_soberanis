@@ -18,24 +18,21 @@ import { ImageDialogComponent } from '../../shared/image-dialog/image-dialog.com
     @if (loading()) {
       <div class="loading">
         <mat-spinner diameter="48"></mat-spinner>
-        <p>Abriendo expediente…</p>
+        <p>Cargando información...</p>
       </div>
     } @else if (character(); as c) {
       <button class="back" mat-button (click)="back()">
-        <mat-icon>arrow_back</mat-icon> Volver al archivo
+        <mat-icon>arrow_back</mat-icon> Volver a personajes
       </button>
       <div class="detail-grid">
         <div class="visual">
-          <span class="index"
-            >{{ universe()?.index }} / {{ c.id.toString().padStart(4, '0') }}</span
-          >
-          <div class="orbits" aria-hidden="true"></div>
+          <span class="index">ID: {{ c.id }}</span>
           <button (click)="openImage()" [attr.aria-label]="'Ampliar imagen de ' + c.name">
             <img [src]="c.image" [alt]="c.name" /><span><mat-icon>zoom_in</mat-icon> Ampliar</span>
           </button>
         </div>
         <article>
-          <p class="eyebrow">{{ universe()?.name }} / Expediente</p>
+          <p class="universe-name">{{ universe()?.name }}</p>
           <h1>{{ c.name }}</h1>
           @if (c.description) {
             <p class="description">{{ c.description }}</p>
@@ -76,7 +73,7 @@ import { ImageDialogComponent } from '../../shared/image-dialog/image-dialog.com
     } @else {
       <div class="loading">
         <mat-icon>error_outline</mat-icon>
-        <h1>Expediente no encontrado</h1>
+        <h1>Personaje no encontrado</h1>
         <button mat-stroked-button (click)="back()">Regresar</button>
       </div>
     }
@@ -113,7 +110,7 @@ export class CharacterDetailComponent {
           next: (c) => this.character.set(c),
           error: () => {
             this.character.set(undefined);
-            this.snack.open('No pudimos abrir este expediente.', 'Cerrar', { duration: 5000 });
+            this.snack.open('No se pudo cargar el personaje.', 'Cerrar', { duration: 5000 });
           },
         });
     });

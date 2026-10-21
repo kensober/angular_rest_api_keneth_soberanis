@@ -1,81 +1,73 @@
 .list-page {
-  padding-top: 54px;
-  padding-bottom: 70px;
+  padding-top: 36px;
+  padding-bottom: 60px;
 }
 header {
-  position: relative;
-  padding-bottom: 38px;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 36px;
+  margin-bottom: 28px;
 }
 header button {
-  color: var(--muted);
   margin-left: -12px;
-  margin-bottom: 38px;
-}
-.eyebrow {
-  color: var(--accent);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: var(--primary);
 }
 .title-row {
   display: flex;
-  align-items: flex-end;
-  gap: 24px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
 }
 h1 {
-  font: 400 clamp(52px, 8vw, 96px)/0.95 var(--display);
-  letter-spacing: -0.04em;
-  margin: 8px 0 0;
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.2;
 }
 .title-row span {
   color: var(--muted);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 11px;
+  white-space: nowrap;
 }
-header > p:last-child {
+header > p {
+  max-width: 700px;
+  margin: 12px 0 0;
   color: var(--muted);
-  max-width: 650px;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 mat-paginator {
-  margin-top: 34px;
-  background: transparent;
+  margin-top: 28px;
+  background: var(--surface);
   color: var(--text);
-  border-top: 1px solid var(--line);
+  border: 1px solid var(--line);
+  border-radius: 4px;
 }
 .state {
-  min-height: 420px;
+  min-height: 360px;
   display: grid;
   place-content: center;
   justify-items: center;
-  text-align: center;
-  color: var(--muted);
   gap: 14px;
+  color: var(--muted);
+  text-align: center;
 }
 .state p {
   margin: 0;
 }
 .empty mat-icon {
-  font-size: 55px;
-  width: 55px;
-  height: 55px;
-  color: var(--accent);
+  width: 48px;
+  height: 48px;
+  color: var(--primary);
+  font-size: 48px;
 }
 .empty h2 {
-  font: 32px var(--display);
+  margin: 4px 0 0;
   color: var(--text);
-  margin: 8px 0 0;
+  font-size: 24px;
 }
-@media (max-width: 1100px) {
+
+@media (max-width: 1050px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -84,22 +76,22 @@ mat-paginator {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  header button {
-    margin-bottom: 24px;
-  }
 }
-@media (max-width: 500px) {
-  .grid {
-    grid-template-columns: 1fr;
+@media (max-width: 520px) {
+  .list-page {
+    padding-top: 24px;
   }
   .title-row {
     display: block;
   }
   .title-row span {
     display: block;
-    margin-top: 12px;
+    margin-top: 8px;
   }
   h1 {
-    font-size: 51px;
+    font-size: 26px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
