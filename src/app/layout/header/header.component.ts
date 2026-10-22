@@ -1,10 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ThemeService } from '../../core/services/theme.service';
 import { UNIVERSES } from '../../core/models/character.model';
 
 @Component({
@@ -35,13 +34,6 @@ import { UNIVERSES } from '../../core/models/character.model';
         }
       </nav>
       <span class="spacer"></span>
-      <button
-        mat-icon-button
-        (click)="theme.toggle()"
-        [attr.aria-label]="theme.mode === 'dark' ? 'Activar tema claro' : 'Activar tema oscuro'"
-      >
-        <mat-icon>{{ theme.mode === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
-      </button>
       <button
         class="mobile-menu"
         mat-icon-button
@@ -129,5 +121,4 @@ import { UNIVERSES } from '../../core/models/character.model';
 })
 export class HeaderComponent {
   readonly universes = UNIVERSES;
-  readonly theme = inject(ThemeService);
 }

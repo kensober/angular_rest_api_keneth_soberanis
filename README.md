@@ -1,6 +1,6 @@
 # Explorador de personajes
 
-Aplicación Angular para explorar personajes de Digimon, Dragon Ball Z, Pokémon y Demon Slayer mediante API REST. Incluye dashboard, rutas sin recarga, listados paginados, modal de imagen, páginas de detalle, estados de carga/error/vacío y temas claro/oscuro.
+Aplicación Angular para explorar personajes de Digimon, Dragon Ball Z, Pokémon y Demon Slayer mediante API REST. Incluye dashboard, rutas sin recarga, listados paginados, modal de imagen, páginas de detalle y estados de carga/error/vacío.
 
 ## Requisitos
 

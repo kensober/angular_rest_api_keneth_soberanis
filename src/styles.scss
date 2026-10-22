@@ -1,8 +1,7 @@
 @import '@angular/material/prebuilt-themes/azure-blue.css';
 @import 'material-icons/iconfont/material-icons.css';
 
-:root,
-[data-theme='light'] {
+:root {
   --bg: #f5f5f5;
   --surface: #ffffff;
   --image-bg: #f5f5f5;
@@ -12,17 +11,6 @@
   --line: #d8d8d8;
   --sans: Roboto, Arial, sans-serif;
   color-scheme: light;
-}
-
-[data-theme='dark'] {
-  --bg: #202020;
-  --surface: #2b2b2b;
-  --image-bg: #333333;
-  --text: #f5f5f5;
-  --muted: #cccccc;
-  --primary: #9fa8da;
-  --line: #555555;
-  color-scheme: dark;
 }
 
 * {
