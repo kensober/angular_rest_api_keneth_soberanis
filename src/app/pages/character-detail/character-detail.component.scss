@@ -1,188 +1,137 @@
 .detail {
-  padding-top: 32px;
-  padding-bottom: 60px;
+  padding: 24px 0 40px;
 }
 .back {
-  margin-left: -12px;
-  margin-bottom: 18px;
-  color: var(--primary);
+  margin: 0 0 16px -12px;
 }
 .detail-grid {
   display: grid;
-  grid-template-columns: minmax(300px, 42%) minmax(0, 1fr);
-  overflow: hidden;
+  grid-template-columns: minmax(260px, 40%) minmax(0, 1fr);
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 6px;
-  box-shadow: var(--shadow);
 }
 .visual {
-  position: relative;
   min-width: 0;
-  min-height: 560px;
+  align-self: start;
   display: grid;
   place-items: center;
   background: var(--image-bg);
   border-right: 1px solid var(--line);
 }
-.index {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  color: var(--muted);
-  font-size: 14px;
-}
 .visual button {
   width: 100%;
-  height: 100%;
-  min-width: 0;
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
-  place-items: center;
-  gap: 14px;
-  padding: 52px 24px 22px;
+  height: 360px;
+  padding: 24px;
   border: 0;
   background: transparent;
-  color: var(--text);
-  cursor: zoom-in;
+  color: var(--primary);
+  cursor: pointer;
 }
 .visual img {
   display: block;
   max-width: 100%;
-  max-height: 430px;
+  max-height: 300px;
+  margin: auto auto 12px;
   object-fit: contain;
-}
-.visual button span {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--primary);
-  font-weight: 600;
 }
 article {
   min-width: 0;
-  padding: 38px;
-}
-.universe-name {
-  margin: 0;
-  color: var(--secondary);
-  font-weight: 600;
+  padding: 24px;
 }
 h1 {
-  margin: 8px 0 22px;
-  font-size: 34px;
-  line-height: 1.2;
-  text-transform: capitalize;
+  margin: 0 0 8px;
+  font-size: 28px;
 }
-.description {
+.universe-name,
+.description,
+dt,
+.sections p {
   color: var(--muted);
-  line-height: 1.6;
+}
+.universe-name {
+  margin: 0 0 20px;
+}
+.description,
+.sections p {
+  line-height: 1.5;
 }
 dl {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 30px 0;
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  margin: 20px 0;
 }
 dl div {
-  min-width: 0;
-  padding: 15px;
-  border-right: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 12px;
+  padding: 10px 0;
   border-bottom: 1px solid var(--line);
 }
 dt {
-  margin-bottom: 6px;
-  color: var(--muted);
-  font-size: 13px;
   font-weight: 600;
 }
 dd {
   margin: 0;
-  line-height: 1.35;
-  text-transform: capitalize;
   overflow-wrap: anywhere;
 }
 .tags,
 .sections {
-  margin-top: 30px;
+  margin-top: 24px;
 }
-.tags h2,
-.sections > h2 {
-  font-size: 21px;
+h2 {
+  font-size: 19px;
 }
-.mat-mdc-chip {
-  background: var(--image-bg) !important;
-  border: 1px solid var(--line);
+.tags ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.tags li {
+  margin-bottom: 4px;
 }
 .sections > div {
-  padding: 15px 0;
+  padding: 12px 0;
   border-top: 1px solid var(--line);
 }
 .sections h3 {
-  margin: 0 0 7px;
-  font-size: 17px;
-  text-transform: capitalize;
+  margin: 0 0 6px;
+  font-size: 16px;
 }
 .sections p {
   margin: 0;
-  color: var(--muted);
-  line-height: 1.55;
 }
-.loading {
-  min-height: 140px;
-  display: grid;
-  place-content: center;
-  justify-items: center;
-  gap: 16px;
-  color: var(--muted);
-  text-align: center;
+.waiting {
+  height: 20px;
 }
 .error-state {
-  min-height: 50vh;
+  padding: 32px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  text-align: center;
 }
-.loading > mat-icon {
-  width: 50px;
-  height: 50px;
-  color: var(--primary);
-  font-size: 50px;
+.error-state p {
+  color: var(--muted);
 }
-.loading h1 {
-  margin: 0;
-  color: var(--text);
-  font-size: 28px;
-}
-
-@media (max-width: 850px) {
+@media (max-width: 750px) {
   .detail-grid {
     grid-template-columns: 1fr;
   }
   .visual {
-    min-height: 430px;
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }
+  .visual button {
+    height: 280px;
+  }
   .visual img {
-    max-height: 330px;
+    max-height: 220px;
   }
 }
 @media (max-width: 520px) {
-  .detail {
-    padding-top: 20px;
-  }
-  .visual {
-    min-height: 350px;
-  }
-  .visual img {
-    max-height: 260px;
-  }
   article {
-    padding: 24px 18px;
+    padding: 18px;
   }
   h1 {
-    font-size: 28px;
+    font-size: 26px;
   }
-  dl {
-    grid-template-columns: 1fr;
+  dl div {
+    grid-template-columns: 110px 1fr;
   }
 }

@@ -20,7 +20,7 @@ import { UNIVERSES } from '../../core/models/character.model';
   template: `<a class="skip-link" href="#contenido-principal">Saltar al contenido</a>
     <mat-toolbar class="topbar">
       <a routerLink="/" class="brand" aria-label="Ir al inicio">
-        <mat-icon>groups</mat-icon><strong>Explorador de personajes</strong>
+        <strong>Explorador de personajes</strong>
       </a>
       <nav aria-label="Navegación principal">
         <a
@@ -66,33 +66,29 @@ import { UNIVERSES } from '../../core/models/character.model';
         z-index: 50;
       }
       .topbar {
-        height: 64px;
+        height: 56px;
         padding: 0 max(16px, calc((100vw - 1200px) / 2));
         background: #3f51b5;
         color: #fff;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       }
       .brand {
         display: flex;
         align-items: center;
-        gap: 10px;
         color: inherit;
         text-decoration: none;
       }
       .brand strong {
-        font-size: 19px;
+        font-size: 17px;
       }
       nav {
         display: flex;
-        margin-left: 32px;
+        margin-left: 24px;
       }
       nav a {
         color: #fff !important;
-        opacity: 0.82;
       }
       nav a.active {
-        opacity: 1;
-        background: rgba(255, 255, 255, 0.14);
+        text-decoration: underline;
       }
       .spacer {
         flex: 1;
@@ -125,7 +121,7 @@ import { UNIVERSES } from '../../core/models/character.model';
       }
       @media (max-width: 460px) {
         .brand strong {
-          font-size: 16px;
+          font-size: 15px;
         }
       }
     `,

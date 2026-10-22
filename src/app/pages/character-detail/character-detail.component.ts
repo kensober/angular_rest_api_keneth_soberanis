@@ -3,17 +3,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CharacterDetail, UniverseInfo, universeInfo } from '../../core/models/character.model';
 import { CharacterApiService } from '../../core/services/character-api.service';
 import { ImageDialogComponent } from '../../shared/image-dialog/image-dialog.component';
 @Component({
   selector: 'app-character-detail',
-  imports: [MatButtonModule, MatChipsModule, MatIconModule, MatProgressSpinnerModule],
+  imports: [MatButtonModule, MatIconModule],
   templateUrl: './character-detail.component.html',
   styleUrl: './character-detail.component.scss',
 })
@@ -27,6 +25,7 @@ export class CharacterDetailComponent {
   readonly universe = signal<UniverseInfo | undefined>(undefined);
   readonly character = signal<CharacterDetail | undefined>(undefined);
   readonly loading = signal(true);
+  readonly error = signal(false);
   constructor() {
     this.route.paramMap.pipe(takeUntilDestroyed(this.destroy)).subscribe((params) => {
       const u = universeInfo(params.get('universe'));
@@ -36,21 +35,29 @@ export class CharacterDetailComponent {
         return;
       }
       this.universe.set(u);
-      this.loading.set(true);
-      this.api
-        .detail(u.id, id)
-        .pipe(
-          finalize(() => this.loading.set(false)),
-          takeUntilDestroyed(this.destroy),
-        )
-        .subscribe({
-          next: (c) => this.character.set(c),
-          error: () => {
-            this.character.set(undefined);
-            this.snack.open('No se pudo cargar el personaje.', 'Cerrar', { duration: 5000 });
-          },
-        });
+      this.load();
     });
+  }
+  load(): void {
+    const u = this.universe();
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (!u || !Number.isFinite(id)) return;
+    this.loading.set(true);
+    this.error.set(false);
+    this.api
+      .detail(u.id, id)
+      .pipe(
+        finalize(() => this.loading.set(false)),
+        takeUntilDestroyed(this.destroy),
+      )
+      .subscribe({
+        next: (c) => this.character.set(c),
+        error: () => {
+          this.character.set(undefined);
+          this.error.set(true);
+          this.snack.open('No se pudo cargar el personaje.', 'Cerrar', { duration: 5000 });
+        },
+      });
   }
   openImage(): void {
     const c = this.character();

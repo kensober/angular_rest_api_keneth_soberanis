@@ -2,13 +2,12 @@ import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
 import { CharacterSummary } from '../../core/models/character.model';
 import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
 
 @Component({
   selector: 'app-character-card',
-  imports: [RouterLink, MatCardModule, MatIconModule],
+  imports: [RouterLink, MatCardModule],
   templateUrl: './character-card.component.html',
   styles: `
     .character {
@@ -17,98 +16,47 @@ import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
       background: var(--surface);
       color: var(--text);
       border: 1px solid var(--line);
-      border-radius: 6px;
-      box-shadow: var(--shadow);
-      transition:
-        transform 0.2s,
-        box-shadow 0.2s;
-    }
-    .character:hover,
-    .character:focus-within {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
     }
     .image-button {
-      position: relative;
       width: 100%;
-      height: 230px;
+      height: 200px;
       border: 0;
       border-bottom: 1px solid var(--line);
       background: var(--image-bg);
       display: grid;
       grid-template: minmax(0, 1fr) / minmax(0, 1fr);
       place-items: center;
-      min-width: 0;
-      min-height: 0;
-      padding: 16px;
+      padding: 12px;
       overflow: hidden;
-      cursor: zoom-in;
+      cursor: pointer;
     }
     .image-button img {
       display: block;
+      width: 100%;
+      height: 100%;
       min-width: 0;
       min-height: 0;
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
       object-fit: contain;
     }
-    .zoom {
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      background: var(--surface);
-      color: var(--text);
-      border-radius: 50%;
-      box-shadow: var(--shadow);
-    }
-    .zoom mat-icon {
-      width: 19px;
-      height: 19px;
-      font-size: 19px;
-    }
     .fallback {
-      display: grid;
-      justify-items: center;
-      gap: 8px;
       color: var(--muted);
     }
     mat-card-content {
-      padding: 18px !important;
+      padding: 14px !important;
     }
     small {
       color: var(--muted);
     }
     h2 {
-      margin: 7px 0 16px;
-      font-size: 21px;
-      line-height: 1.2;
-      text-transform: capitalize;
+      margin: 6px 0 12px;
+      font-size: 18px;
     }
     .detail-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
       color: var(--primary);
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .detail-link:hover {
-      text-decoration: underline;
-    }
-    .detail-link mat-icon {
-      width: 18px;
-      height: 18px;
-      font-size: 18px;
     }
     @media (max-width: 600px) {
       .image-button {
-        height: 220px;
+        height: 200px;
       }
     }
   `,

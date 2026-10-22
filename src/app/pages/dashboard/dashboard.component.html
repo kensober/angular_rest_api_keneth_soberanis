@@ -2,28 +2,26 @@
   <section class="intro">
     <h1>Explorador de personajes</h1>
     <p>Consulta personajes de cuatro universos usando diferentes APIs REST.</p>
-    <span><mat-icon>public</mat-icon> 4 universos disponibles</span>
   </section>
   <section aria-labelledby="universos-title">
     <h2 id="universos-title">Selecciona un universo</h2>
     <div class="universe-grid">
       @for (u of universes; track u.id; let i = $index) {
-        <article class="universe" [style.--universe-accent]="u.accent">
+        <article class="universe">
           <div class="universe-image">
             @if (!broken[i]) {
               <img [src]="u.image" [alt]="'Personaje de ' + u.name" (error)="markBroken(i)" />
             } @else {
-              <mat-icon>image_not_supported</mat-icon>
+              <span>Imagen no disponible</span>
             }
           </div>
           <div class="universe-copy">
             <h3>{{ u.name }}</h3>
             <p>{{ u.description }}</p>
-            <a [routerLink]="['/', u.id]">Ver personajes <mat-icon>arrow_forward</mat-icon></a>
+            <a [routerLink]="['/', u.id]">Ver personajes</a>
           </div>
         </article>
       }
     </div>
   </section>
-  <footer>Proyecto de Programación Web · APIs REST</footer>
 </main>

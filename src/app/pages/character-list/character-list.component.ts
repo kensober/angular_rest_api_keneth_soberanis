@@ -5,7 +5,6 @@ import { finalize } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorIntl, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CharacterSummary, UniverseInfo, universeInfo } from '../../core/models/character.model';
 import { CharacterApiService } from '../../core/services/character-api.service';
@@ -17,7 +16,6 @@ import { CharacterCardComponent } from '../../shared/character-card/character-ca
     MatButtonModule,
     MatIconModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule,
     MatSnackBarModule,
     CharacterCardComponent,
   ],
@@ -35,6 +33,7 @@ export class CharacterListComponent {
   readonly items = signal<CharacterSummary[]>([]);
   readonly total = signal(0);
   readonly loading = signal(true);
+  readonly error = signal(false);
   readonly page = signal(0);
   pageSize = 12;
   constructor() {
@@ -53,6 +52,7 @@ export class CharacterListComponent {
     const current = this.universe();
     if (!current) return;
     this.loading.set(true);
+    this.error.set(false);
     this.api
       .list(current.id, this.page(), this.pageSize)
       .pipe(
@@ -66,6 +66,7 @@ export class CharacterListComponent {
         },
         error: () => {
           this.items.set([]);
+          this.error.set(true);
           this.snack.open('No se pudieron cargar los personajes. Verifica tu conexión.', 'Cerrar', {
             duration: 5000,
           });

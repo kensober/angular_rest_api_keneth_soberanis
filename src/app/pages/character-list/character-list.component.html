@@ -12,9 +12,7 @@
     </header>
 
     @if (loading()) {
-      <div class="state loading-state" role="status" aria-label="Cargando personajes">
-        <mat-spinner diameter="32"></mat-spinner>
-      </div>
+      <div class="waiting" aria-busy="true"></div>
     } @else if (items().length) {
       <div class="grid">
         @for (character of items(); track character.id) {
@@ -31,9 +29,14 @@
       />
     } @else {
       <div class="state empty">
-        <mat-icon>travel_explore</mat-icon>
         <h2>No hay personajes</h2>
-        <p>No se encontraron resultados.</p>
+        <p>
+          {{
+            error()
+              ? 'No se pudieron cargar los personajes. Revisa tu conexión.'
+              : 'No se encontraron resultados.'
+          }}
+        </p>
         <button mat-stroked-button (click)="load()">Intentar de nuevo</button>
       </div>
     }

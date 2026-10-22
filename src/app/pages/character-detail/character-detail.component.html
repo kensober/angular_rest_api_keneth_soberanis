@@ -1,22 +1,19 @@
 <section class="detail page-shell">
   @if (loading()) {
-    <div class="loading" role="status" aria-label="Cargando información">
-      <mat-spinner diameter="32"></mat-spinner>
-    </div>
+    <div class="waiting" aria-busy="true"></div>
   } @else if (character(); as c) {
     <button class="back" mat-button (click)="back()">
       <mat-icon>arrow_back</mat-icon> Volver a personajes
     </button>
     <div class="detail-grid">
       <div class="visual">
-        <span class="index">ID: {{ c.id }}</span>
         <button (click)="openImage()" [attr.aria-label]="'Ampliar imagen de ' + c.name">
-          <img [src]="c.image" [alt]="c.name" /><span><mat-icon>zoom_in</mat-icon> Ampliar</span>
+          <img [src]="c.image" [alt]="c.name" /><span>Ampliar imagen</span>
         </button>
       </div>
       <article>
-        <p class="universe-name">{{ universe()?.name }}</p>
         <h1>{{ c.name }}</h1>
+        <p class="universe-name">{{ universe()?.name }} · ID: {{ c.id }}</p>
         @if (c.description) {
           <p class="description">{{ c.description }}</p>
         }
@@ -33,11 +30,11 @@
         @if (c.tags.length) {
           <section class="tags">
             <h2>Clasificación y habilidades</h2>
-            <mat-chip-set aria-label="Atributos del personaje">
+            <ul>
               @for (tag of c.tags; track tag) {
-                <mat-chip>{{ tag }}</mat-chip>
+                <li>{{ tag }}</li>
               }
-            </mat-chip-set>
+            </ul>
           </section>
         }
         @if (c.sections.length) {
@@ -54,10 +51,17 @@
       </article>
     </div>
   } @else {
-    <div class="loading error-state">
-      <mat-icon>error_outline</mat-icon>
-      <h1>Personaje no encontrado</h1>
-      <button mat-stroked-button (click)="back()">Regresar</button>
+    <div class="error-state">
+      <h1>{{ error() ? 'No se pudo cargar el personaje' : 'Personaje no encontrado' }}</h1>
+      <p>
+        {{
+          error()
+            ? 'Revisa tu conexión e inténtalo de nuevo.'
+            : 'Comprueba que el enlace sea correcto.'
+        }}
+      </p>
+      <button mat-stroked-button (click)="load()">Intentar de nuevo</button>
+      <button mat-button (click)="back()">Volver</button>
     </div>
   }
 </section>
