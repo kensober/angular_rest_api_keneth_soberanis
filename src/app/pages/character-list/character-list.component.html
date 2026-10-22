@@ -4,15 +4,16 @@
       <button mat-button (click)="back()"><mat-icon>arrow_back</mat-icon> Volver</button>
       <div class="title-row">
         <h1>Personajes de {{ universe()!.name }}</h1>
-        <span>{{ total() }} personajes</span>
+        @if (!loading()) {
+          <span>{{ total() }} personajes</span>
+        }
       </div>
       <p>{{ universe()!.description }}</p>
     </header>
 
     @if (loading()) {
-      <div class="state" role="status">
-        <mat-spinner diameter="44"></mat-spinner>
-        <p>Cargando personajes...</p>
+      <div class="state loading-state" role="status" aria-label="Cargando personajes">
+        <mat-spinner diameter="32"></mat-spinner>
       </div>
     } @else if (items().length) {
       <div class="grid">

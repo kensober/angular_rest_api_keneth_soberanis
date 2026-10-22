@@ -52,6 +52,9 @@ mat-paginator {
   color: var(--muted);
   text-align: center;
 }
+.loading-state {
+  min-height: 140px;
+}
 .state p {
   margin: 0;
 }

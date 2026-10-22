@@ -130,13 +130,16 @@ dd {
   line-height: 1.55;
 }
 .loading {
-  min-height: 65vh;
+  min-height: 140px;
   display: grid;
   place-content: center;
   justify-items: center;
   gap: 16px;
   color: var(--muted);
   text-align: center;
+}
+.error-state {
+  min-height: 50vh;
 }
 .loading > mat-icon {
   width: 50px;

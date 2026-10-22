@@ -1,8 +1,7 @@
 <section class="detail page-shell">
   @if (loading()) {
-    <div class="loading">
-      <mat-spinner diameter="48"></mat-spinner>
-      <p>Cargando información...</p>
+    <div class="loading" role="status" aria-label="Cargando información">
+      <mat-spinner diameter="32"></mat-spinner>
     </div>
   } @else if (character(); as c) {
     <button class="back" mat-button (click)="back()">
@@ -55,7 +54,7 @@
       </article>
     </div>
   } @else {
-    <div class="loading">
+    <div class="loading error-state">
       <mat-icon>error_outline</mat-icon>
       <h1>Personaje no encontrado</h1>
       <button mat-stroked-button (click)="back()">Regresar</button>
